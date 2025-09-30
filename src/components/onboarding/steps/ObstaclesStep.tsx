@@ -25,31 +25,36 @@ export const ObstaclesStep = ({ value = [], onChange }: ObstaclesStepProps) => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2 text-center">
-        <h2 className="text-3xl font-bold">What's been stopping you?</h2>
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <h2 className="text-2xl font-bold text-foreground">What's been stopping you?</h2>
         <p className="text-foreground-secondary">Select all that apply</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 pt-4">
+      <div className="space-y-3">
         {obstacles.map((obstacle) => {
-          const Icon = obstacle.icon;
           const isSelected = value.includes(obstacle.value);
           
           return (
             <button
               key={obstacle.value}
               onClick={() => toggleObstacle(obstacle.value)}
-              className={`p-6 rounded-2xl border-2 transition-spring surface-glow hover:scale-105 ${
+              className={`w-full p-5 rounded-2xl border transition-smooth text-left flex items-center gap-4 ${
                 isSelected
-                  ? "border-primary bg-primary/10"
-                  : "border-stroke bg-surface hover:border-stroke/60"
+                  ? "border-foreground bg-muted"
+                  : "border-border bg-background hover:bg-surface"
               }`}
             >
-              <div className={`p-3 rounded-xl mx-auto w-fit mb-3 ${isSelected ? "bg-primary/20" : "bg-secondary"}`}>
-                <Icon className={isSelected ? "text-primary" : "text-foreground-secondary"} size={24} />
+              <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
+                isSelected ? "border-foreground bg-foreground" : "border-border"
+              }`}>
+                {isSelected && (
+                  <svg className="w-3 h-3 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
               </div>
-              <div className="font-medium text-sm">{obstacle.label}</div>
+              <div className="font-medium text-foreground">{obstacle.label}</div>
             </button>
           );
         })}

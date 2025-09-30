@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
@@ -29,38 +28,44 @@ export const SourceStep = ({ value, onChange }: SourceStepProps) => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2 text-center">
-        <h2 className="text-3xl font-bold">How did you hear about us?</h2>
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <h2 className="text-2xl font-bold text-foreground">How did you hear about us?</h2>
         <p className="text-foreground-secondary">Help us improve our reach</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 pt-4">
+      <div className="space-y-3">
         {sources.map((source) => (
-          <Button
+          <button
             key={source}
-            variant={value === source ? "default" : "outline"}
             onClick={() => handleSourceClick(source)}
-            className={`h-auto py-4 ${
-              value === source ? "bg-primary text-primary-foreground" : ""
+            className={`w-full p-5 rounded-2xl border transition-smooth text-left flex items-center gap-4 ${
+              value === source
+                ? "border-foreground bg-muted"
+                : "border-border bg-background hover:bg-surface"
             }`}
           >
-            {source}
-          </Button>
+            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+              value === source ? "border-foreground" : "border-border"
+            }`}>
+              {value === source && (
+                <div className="w-2.5 h-2.5 rounded-full bg-foreground" />
+              )}
+            </div>
+            <div className="font-medium text-foreground">{source}</div>
+          </button>
         ))}
-      </div>
 
-      {showCustomInput && (
-        <div className="pt-2">
+        {showCustomInput && (
           <Input
             placeholder="Please specify..."
             value={value && !sources.includes(value) ? value : ""}
             onChange={(e) => onChange(e.target.value)}
-            className="h-12 bg-surface border-stroke"
+            className="h-12 bg-background border-border mt-2"
             autoFocus
           />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

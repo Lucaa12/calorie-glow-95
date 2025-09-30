@@ -8,17 +8,17 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Deep space backgrounds */
-    --background: 215 40% 6%;
-    --surface: 215 35% 9%;
+    /* Light, minimal backgrounds */
+    --background: 0 0% 98%;
+    --surface: 0 0% 95%;
     
     /* Text hierarchy */
-    --foreground: 215 80% 95%;
-    --foreground-secondary: 215 30% 70%;
+    --foreground: 0 0% 10%;
+    --foreground-secondary: 0 0% 45%;
     
-    /* Gradient accent (teal → violet) */
-    --gradient-start: 186 93% 69%;
-    --gradient-end: 258 90% 76%;
+    /* Simple accent */
+    --primary: 0 0% 30%;
+    --primary-foreground: 0 0% 98%;
     
     /* Status colors */
     --success: 158 64% 52%;
@@ -26,57 +26,38 @@ All colors MUST be HSL.
     --danger: 0 84% 60%;
     
     /* Borders & strokes */
-    --border: 215 25% 15%;
-    --stroke: 215 20% 18%;
+    --border: 0 0% 90%;
+    --stroke: 0 0% 88%;
     
     /* Component tokens */
-    --card: 215 35% 9%;
-    --card-foreground: 215 80% 95%;
+    --card: 0 0% 95%;
+    --card-foreground: 0 0% 10%;
     
-    --popover: 215 35% 9%;
-    --popover-foreground: 215 80% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
     
-    --primary: 186 93% 69%;
-    --primary-foreground: 215 40% 6%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 10%;
     
-    --secondary: 215 25% 15%;
-    --secondary-foreground: 215 80% 95%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 45%;
     
-    --muted: 215 25% 15%;
-    --muted-foreground: 215 30% 70%;
-    
-    --accent: 258 90% 76%;
-    --accent-foreground: 215 40% 6%;
+    --accent: 0 0% 85%;
+    --accent-foreground: 0 0% 10%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 215 80% 95%;
+    --destructive-foreground: 0 0% 98%;
     
-    --input: 215 25% 15%;
-    --ring: 186 93% 69%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 60%;
     
-    --radius: 1.5rem;
+    --radius: 1rem;
   }
 }
 
 @layer utilities {
-  .gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-end)) 100%);
-  }
-  
-  .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-end)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .surface-glow {
-    box-shadow: 0 0 0 1px hsl(var(--stroke)), 
-                inset 0 1px 0 0 hsl(var(--gradient-start) / 0.08);
-  }
-  
-  .transition-spring {
-    transition: all 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  .transition-smooth {
+    transition: all 180ms ease-out;
   }
 }
 

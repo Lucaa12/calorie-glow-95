@@ -51,36 +51,34 @@ export const MeasurementsStep = ({
   };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2 text-center">
-        <h2 className="text-3xl font-bold">Your measurements</h2>
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <h2 className="text-2xl font-bold text-foreground">Your measurements</h2>
         <p className="text-foreground-secondary">We'll use this to calculate your goals</p>
       </div>
 
-      <div className="flex justify-center pt-2">
-        <div className="inline-flex rounded-xl bg-secondary p-1">
+      <div className="flex justify-start">
+        <div className="inline-flex rounded-full bg-muted p-1">
           <Button
-            variant={unitSystem === "metric" ? "default" : "ghost"}
+            variant={unitSystem === "metric" ? "primary" : "ghost"}
             size="sm"
             onClick={() => unitSystem !== "metric" && handleUnitToggle()}
-            className="rounded-lg"
           >
             Metric
           </Button>
           <Button
-            variant={unitSystem === "imperial" ? "default" : "ghost"}
+            variant={unitSystem === "imperial" ? "primary" : "ghost"}
             size="sm"
             onClick={() => unitSystem !== "imperial" && handleUnitToggle()}
-            className="rounded-lg"
           >
             Imperial
           </Button>
         </div>
       </div>
 
-      <div className="space-y-4 pt-4">
+      <div className="space-y-4">
         <div className="space-y-2">
-          <Label className="text-foreground-secondary uppercase tracking-wider text-sm">
+          <Label className="text-foreground-secondary text-sm">
             Height {unitSystem === "metric" ? "(cm)" : "(inches)"}
           </Label>
           <Input
@@ -88,12 +86,12 @@ export const MeasurementsStep = ({
             value={height || ""}
             onChange={(e) => onHeightChange(Number(e.target.value))}
             placeholder={unitSystem === "metric" ? "170" : "67"}
-            className="h-14 text-lg bg-surface border-stroke"
+            className="h-14 text-lg bg-background border-border"
           />
         </div>
 
         <div className="space-y-2">
-          <Label className="text-foreground-secondary uppercase tracking-wider text-sm">
+          <Label className="text-foreground-secondary text-sm">
             Weight {unitSystem === "metric" ? "(kg)" : "(lb)"}
           </Label>
           <Input
@@ -101,7 +99,7 @@ export const MeasurementsStep = ({
             value={weight || ""}
             onChange={(e) => onWeightChange(Number(e.target.value))}
             placeholder={unitSystem === "metric" ? "70" : "154"}
-            className="h-14 text-lg bg-surface border-stroke"
+            className="h-14 text-lg bg-background border-border"
           />
         </div>
       </div>

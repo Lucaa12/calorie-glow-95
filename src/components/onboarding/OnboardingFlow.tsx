@@ -111,34 +111,36 @@ export const OnboardingFlow = ({ onComplete }: OnboardingFlowProps) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col px-6 py-8">
-      <div className="max-w-2xl w-full mx-auto flex-1 flex flex-col">
-        <ProgressBar currentStep={currentStep} totalSteps={ONBOARDING_STEPS} />
+    <div className="min-h-screen flex flex-col bg-background">
+      <div className="max-w-lg w-full mx-auto flex-1 flex flex-col px-6 py-6">
+        <div className="flex items-center gap-4 mb-6">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleBack}
+            disabled={currentStep === 1}
+            className="flex-shrink-0"
+          >
+            <ArrowLeft />
+          </Button>
+          <div className="flex-1">
+            <ProgressBar currentStep={currentStep} totalSteps={ONBOARDING_STEPS} />
+          </div>
+        </div>
 
-        <div className="flex-1 flex items-center justify-center py-8">
+        <div className="flex-1 flex items-start pt-8">
           <div className="w-full">{renderStep()}</div>
         </div>
 
-        <div className="flex gap-3">
+        <div className="pt-6">
           <Button
-            variant="outline"
-            size="lg"
-            onClick={handleBack}
-            disabled={currentStep === 1}
-            className="flex-1"
-          >
-            <ArrowLeft />
-            Back
-          </Button>
-          <Button
-            variant="gradient"
+            variant="default"
             size="lg"
             onClick={handleNext}
             disabled={!canProceed()}
-            className="flex-1"
+            className="w-full"
           >
-            {currentStep === ONBOARDING_STEPS ? "Complete" : "Next"}
-            <ArrowRight />
+            Continue
           </Button>
         </div>
       </div>
