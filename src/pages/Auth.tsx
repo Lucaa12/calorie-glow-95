@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import logo from "@/assets/logo.png";
+import authIllustration from "@/assets/auth-illustration.png";
 
 export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -36,18 +38,46 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
-      <div className="max-w-md w-full space-y-8">
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-foreground">
-            {isSignUp ? "Create your account" : "Welcome back"}
-          </h1>
-          <p className="text-foreground-secondary">
-            {isSignUp
-              ? "Start your health journey today"
-              : "Sign in to continue your journey"}
-          </p>
+    <div className="min-h-screen flex flex-col lg:flex-row bg-background">
+      {/* Left side - Illustration */}
+      <div className="hidden lg:flex lg:w-1/2 bg-muted items-center justify-center p-12">
+        <div className="max-w-lg space-y-6 text-center">
+          <img 
+            src={authIllustration} 
+            alt="Health tracking illustration" 
+            className="w-full h-auto"
+          />
+          <div className="space-y-2">
+            <h2 className="text-2xl font-bold text-foreground">
+              Track your journey to better health
+            </h2>
+            <p className="text-foreground-secondary">
+              Join thousands of users reaching their fitness goals with personalized calorie tracking
+            </p>
+          </div>
         </div>
+      </div>
+
+      {/* Right side - Auth form */}
+      <div className="flex-1 flex items-center justify-center px-6 py-12">
+        <div className="max-w-md w-full space-y-8">
+          <div className="text-center space-y-4">
+            <img 
+              src={logo} 
+              alt="Logo" 
+              className="w-16 h-16 mx-auto"
+            />
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold text-foreground">
+                {isSignUp ? "Create your account" : "Welcome back"}
+              </h1>
+              <p className="text-foreground-secondary">
+                {isSignUp
+                  ? "Start your health journey today"
+                  : "Sign in to continue your journey"}
+              </p>
+            </div>
+          </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {isSignUp && (
@@ -114,6 +144,7 @@ export default function Auth() {
               ? "Already have an account? Sign in"
               : "Don't have an account? Sign up"}
           </Button>
+        </div>
         </div>
       </div>
     </div>
