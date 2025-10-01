@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 interface WelcomeProps {
@@ -5,8 +6,10 @@ interface WelcomeProps {
 }
 
 export const Welcome = ({ onGetStarted }: WelcomeProps) => {
+  const navigate = useNavigate();
+
   const handleSignIn = () => {
-    console.log("Sign in clicked");
+    navigate("/auth");
   };
 
   return (
